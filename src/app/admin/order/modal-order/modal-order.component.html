@@ -1,0 +1,28 @@
+<header class="modal-header">
+    <h5>{{ title }}</h5>
+</header>
+<div class="form-modal-container">
+    <form [formGroup]="form">
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Số Điện Thoại</label>
+            <input type="number" class="form-control" id="quantity" formControlName="phoneNumber">
+          </div>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Địa Chỉ</label>
+            <input type="text" class="form-control" id="brand" formControlName="address">
+          </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Trạng Thái Đơn Hàng</label>
+            <select class="form-control"  formControlName="status">
+              <option *ngIf="data.status != '1'" value="0">Chưa Hoàn Thành</option>
+              <option  *ngIf="data.status != '1'" value="2">Đã Xác Nhận</option>
+              <option  *ngIf="data.status != '1'" value="3">Đang Giao Hàng</option>
+              <option value="1">Hoàn Thành</option>
+            </select>
+          </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()">Submit</button>
+    <button type="button" class="btn btn-sm btn-danger" (click)="closeModal()">Cancel</button>
+</div>

@@ -1,0 +1,78 @@
+
+<header class="modal-header">
+    <h5>{{title}}</h5>
+</header>
+<div class="form-modal-container">
+
+    <form [formGroup]="form" >
+        <div class="mb-3">
+          <label for="name" class="form-label">Tên Sản Phẩm</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+
+          <div class="mb-3">
+            <label for="gender" class="form-label">Danh Mục</label>
+            <select class="form-control"  formControlName="category">
+                <ng-container *ngFor="let c of listCaterogy">
+                    <option value="{{c.id}}">{{c.name}}</option>
+                </ng-container>
+             
+            </select>
+          </div>
+          
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Số Lượng</label>
+          <input type="number" class="form-control" id="quantity" formControlName="quantity">
+        </div>
+        <div class="mb-3">
+          <label for="brand" class="form-label">Thương Hiệu</label>
+          <input type="text" class="form-control" id="brand" formControlName="brand">
+        </div>
+        <div class="mb-3">
+          <label for="gender" class="form-label">Giới Tính</label>
+          <select class="form-control"  formControlName="gender">
+            <option value="1">Nam</option>
+            <option value="2">Nữ</option>
+          </select>
+        </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Size</label>
+            <ng-multiselect-dropdown
+            [placeholder]="'Select Size'"
+            [data]="dropdownList"
+            formControlName="size"
+            [settings]="dropdownSettings">
+          
+        </ng-multiselect-dropdown>
+
+          </div>
+          
+        <div class="mb-3">
+          <label for="img" class="form-label">Hình Ảnh</label>
+          <input style="height: 45px;" type="file" (change)="onFileChanged($event)" class="form-control" name="file">
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Giá</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <div class="mb-3">
+            <label for="sale" class="form-label">Giảm Giá (%)</label>
+            <input type="number" class="form-control" id="sale" formControlName="sale">
+          </div>
+        <!-- <div class="mb-3">
+          <label for="order" class="form-label">Lượt Mua</label>
+          <input type="number" class="form-control" id="order" formControlName="order">
+        </div> -->
+        <div class="mb-3">
+            <label for="description" class="form-label">Mô Tả</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+          </div>
+      </form>
+   
+      
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-sm btn-primary"(click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-sm btn-danger" (click)="closeModal()">Cancel</button>
+</div>

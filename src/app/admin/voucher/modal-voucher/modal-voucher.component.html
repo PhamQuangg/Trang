@@ -1,0 +1,33 @@
+<header class="modal-header">
+    <h5>{{title}}</h5>
+</header>
+<div class="form-modal-container">
+
+<form [formGroup]="form">
+    <div class="form-group" >
+      <label >Tên</label>
+      <input type="text" class="form-control" formControlName="name" name="name">
+
+    </div>
+    <div class="form-group" >
+      <label >Giá trị</label>
+      <input type="number" class="form-control" formControlName="value" name="value">
+
+    </div>
+    <div class="form-group" >
+      <label >Lượt sử dụng</label>
+      <input type="number" class="form-control" formControlName="turn" name="turn">
+
+    </div>
+    <div class="form-group" >
+      <label >Ngày hết hạn</label>
+      <input type="date" class="form-control" formControlName="expirationDate" name="expirationDate">
+
+    </div>
+</form>
+      
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-sm btn-primary" (click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-sm btn-danger" (click)="closeModal()">Cancel</button>
+</div>

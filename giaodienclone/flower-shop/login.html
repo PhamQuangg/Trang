@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="container py-2" style="height: 113px;">
+                <div class="row py-4 pb-0 pb-sm-4 align-items-center ">
+        
+                    <div class="col-sm-4 col-lg-3 text-center text-sm-start">
+                        <div class="main-logo">
+                            <a href="index.html">
+                                <img src="https://c8.alamy.com/comp/2A1913F/flower-shop-logo-vector-floral-emblem-isolated-on-a-white-background-2A1913F.jpg"
+                                    alt="logo" class="img-fluid" width="80">
+                            </a>
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-5 d-none d-lg-block">
+                        <div class="search-bar border rounded-2 px-3 border-dark-subtle">
+                            <form id="search-form" class="text-center d-flex align-items-center" action="" method="">
+                                <input type="text" class="form-control border-0 bg-transparent"
+                                    placeholder="Search for more than 10,000 products">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z">
+                                    </path>
+                                </svg>
+                            </form>
+                        </div>
+                    </div>
+        
+                    <div class="col-sm-8 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
+                        <span style="margin-right: 30px;">
+                            <a href="/cart.html" style="font-size: 20px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                        </span>
+                     
+                        <div class="dropdown avatar">
+                            <img src="https://zpsocial-f59-org.zadn.vn/2eee83bdca992ac77388.jpg" width="50" style="border-radius: 50%;">
+                            <button class="btn avatar-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Như
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="/login.html">Đăng Nhập</a>
+                              <a class="dropdown-item" href="/profile.html">Hồ Sơ Của Tôi</a>
+                              <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+                            </div>
+                          </div>
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="container-fluid">
+                <hr class="m-0">
+            </div>
+            <div class="container">
+                <div class="nav-bar-container">
+                    <nav class="nav-bar">
+                        <ul class="ul-nav-bar">
+                            <li><a href="/index.html">Trang Chủ</a></li>
+                            <li><a href="/partterns.html">Sản Phẩm</a></li>
+                            <li><a href="/about.html">Giới Thiệu</a></li>
+                            <li><a href="/blog.html">Bài Viết</a></li>
+                            <li><a href="/partternist.html">Đối Tác</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    
+        <div class="container">
+            <div class="page-container" id="page-container">
+
+                <main class="main">
+                    <div class="login-div content" *ngIf="checkForm == 0" >
+                        <form class="login-form" [formGroup]="loginForm">
+                            <h1 style="font-size: 20px; margin-bottom: 9px;"> Login</h1>
+                            <div class="mb-3">
+                           
+                              <input type="email" class="form-control form-cus" formControlName="email" placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                            
+                              <input type="password" class="form-control form-cus" formControlName="password"  placeholder="Password">
+                            </div>
+        
+                            <button type="submit" class="btn btn-primary btn-cus" (click)="login()">Submit</button>
+        
+                             <label class="form-check-label" for="exampleCheck1" style="margin-top: 10px; font-size: 12px;" >
+                               <a style="text-decoration: solid black; cursor: pointer;" (click)="checkForm = 2 ">FORGOT YOUR PASSWORD?</a> 
+                            </label>
+        
+                             <a type="submit" class="btn btn-primary btn-cus" style="margin-top: 30px;" href="/signup.html">Register an account</a>
+                          </form>
+                    </div>
+                 
+                </main>
+        
+            </div>
+        </div>
+    
+        <footer class="footer-area" style="margin-top: 150px;">
+            <div class="container">
+                <div class="row">
+    
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-lg-4">
+                        <div class="footer-widget-area mt-50">
+                            <h6 class="widget-title mb-5">Giới Thiệu</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris
+                                sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus
+                                finibus. </p>
+                        </div>
+                    </div>
+    
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-md-6 col-lg-4" style="margin-left: 10px;">
+                        <div class="footer-widget-area mt-50">
+                            <h6 class="widget-title mb-5">Find us on the map</h6>
+                            <img src="https://themewagon.github.io/palatin/img/bg-img/footer-map.png" alt="">
+                        </div>
+                    </div>
+    
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="footer-widget-area mt-50">
+                            <h6 class="widget-title mb-5">Subscribe to our newsletter</h6>
+                            <form action="#" method="post" class="subscribe-form">
+                                <input type="email" name="subscribe-email" id="subscribeemail" placeholder="Your E-mail">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <!-- Copywrite Text -->
+                    <div class="col-12">
+                        <div class="copywrite-text mt-30">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

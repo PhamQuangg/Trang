@@ -1,0 +1,100 @@
+<div class="position-relative bg-white d-flex p-0 dashboard-admin margin-0">
+
+
+
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-light navbar-light">
+            <a href="index.html" class="logo navbar-brand mx-4 mb-3">
+                <img src="assets/images/logo.png">
+            </a>
+            <div class="navbar-nav w-100">
+                <!-- <a class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> -->
+                <div class="nav-item  dropdown">
+                    <a type="button" class="nav-link dropdown-toggle " data-toggle="dropdown">
+                        <i class="fa fa-laptop me-2"></i>Product Manager </a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <a class="dropdown-item" (click)="checkPage = 1">Category</a>
+                        <a class="dropdown-item" (click)="checkPage = 2">Size</a>
+                        <a class="dropdown-item" (click)="checkPage = 3">Product</a>
+                    </div>
+                </div>
+                <!-- <div class="nav-item  dropdown">
+                    <a type="button" class="nav-link dropdown-toggle " data-toggle="dropdown">
+                        <i class="fa fa-laptop me-2"></i>Elements</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="#">Link 2</a>
+                      <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                  </div> -->
+
+                <a class="nav-item nav-link" style="cursor: pointer;" (click)="checkPage = 4"> <i
+                        class="fa fa-credit-card" aria-hidden="true"></i>Voucher</a>
+                <a class="nav-item nav-link" style="cursor: pointer;" (click)="checkPage = 5"> <i
+                        class="fa fa-shopping-cart" aria-hidden="true"></i>Order</a>
+                <a class="nav-item nav-link" style="cursor: pointer;" (click)="checkPage = 6"> <i class="fa fa-user"
+                        aria-hidden="true"></i>Account</a>
+                <a class="nav-item nav-link" style="cursor: pointer;" (click)="checkPage = 7"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                <a class="nav-item nav-link" (click)="logOut()" style="cursor: pointer;"><i
+                        class="fa fa-key me-2"></i>Log Out</a>
+            </div>
+        </nav>
+    </div>
+    <!-- Sidebar End -->
+
+
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+       
+        <!-- Navbar End -->
+
+
+        <!-- Recent Sales Start -->
+        <div class="container-fluid pt-4 px-4 height-85">
+
+            <ng-container *ngIf="checkPage == 1">
+                <app-cartegory></app-cartegory>
+            </ng-container>
+
+            <ng-container *ngIf="checkPage == 2">
+                <app-size></app-size>
+            </ng-container>
+
+            <ng-container *ngIf="checkPage == 3">
+                <app-product></app-product>
+            </ng-container>
+
+
+            <ng-container *ngIf="checkPage == 4">
+                <app-voucher></app-voucher>
+            </ng-container>
+
+            <ng-container *ngIf="checkPage == 5">
+                <app-order></app-order>
+            </ng-container>
+
+            <ng-container *ngIf="checkPage == 6">
+                <app-account></app-account>
+            </ng-container>
+            <ng-container *ngIf="checkPage == 7">
+                <app-chart></app-chart>
+            </ng-container>
+        </div>
+        <!-- Recent Sales End -->
+
+        <!-- Footer Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded-top p-4">
+
+            </div>
+        </div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+
+    <!-- Back to Top -->
+    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> -->
+</div>

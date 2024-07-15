@@ -1,0 +1,33 @@
+.search-box{
+    padding: unset;
+}
+.header-box{
+    width: 100%;
+    height: 40px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-item{
+ padding: 8px;
+ cursor: pointer;
+ border: 1px solid gray;
+}
+.form-cus{    
+    font-size: 14px !important;
+    padding: 9px !important;
+    border-radius: 0px !important;
+}
+.search-item {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.search-item.active {
+    background-color: black;
+    color: white;
+}

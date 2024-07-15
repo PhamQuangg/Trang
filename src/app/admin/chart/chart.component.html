@@ -1,0 +1,64 @@
+<div class="bg-light text-center rounded p-4 height-85">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h5>Doanh thu</h5>
+        <div>
+            <select class="form-control border-0" (change)="onTableSelect($event)">
+                <option value="daily">Doanh thu theo ngày</option>
+                <option value="monthly">Doanh thu theo tháng</option>
+            </select>
+        </div>
+    </div>
+    <div class="btn-creater-content">
+        <span>
+            Ngày bắt đầu :
+            <input type="date" (change)="onStartDateChange($event)">
+        </span> ||
+        <span>
+            Ngày kết thúc :
+            <input type="date" (change)="onEndDateChange($event)">
+        </span>
+        <button class="btn btn-sm btn-success" style="margin-left: 5px;" (click)="filterRevenueByDate()">Lọc</button>
+        <button class="btn btn-sm btn-danger" style="margin-left: 5px;" (click)="resetfilter()">Reset</button>
+        <div style="margin-top: 19px;">
+            Tổng Doanh Thu : {{sumPrice}}
+        </div>
+    </div>
+   
+    <div class="table-responsive" *ngIf="selectedTable === 'daily'">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Ngày</th>
+                    <th scope="col">Doanh thu (VND)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let revenue of dailyRevenue; let index = index">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ revenue.date }}</td>
+                    <td>{{ revenue.revenue | number }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive" *ngIf="selectedTable === 'monthly'">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tháng</th>
+                    <th scope="col">Doanh thu (VND)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let revenue of monthlyRevenue; let index = index">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ revenue.date }}</td>
+                    <td>{{ revenue.revenue | number }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

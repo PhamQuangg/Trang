@@ -1,0 +1,55 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Tên </th>
+        <th scope="col">Giá </th>
+        <th scope="col">Size</th>
+        <th scope="col">Số Lượng</th>
+        <th scope="col">Giá Sau Chiết Khấu</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listData; let i = index">
+        <td>{{item.productName}}</td>
+        <td>{{item.productPrice}}</td>
+        <td>{{item.sizeName}}</td>
+        <td>{{item.amount}}</td>
+        <td>{{item.price}}</td>
+        <td>
+          <button *ngIf="item.preview != 1 && data.status == '1' && userRole != '0'" (click)="setFormValue(item)"  type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Đánh Giá
+          </button>
+        </td>
+      </tr>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title" id="exampleModalLabel">Đánh Giá Sản Phẩm</h6>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="form">
+                <div class="mb-3">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="decriptions"
+                    name="decriptions"></textarea>
+                </div>
+              </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="onSubmit()" data-bs-dismiss="modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tbody>
+  </table>
+  <!-- Button trigger modal -->
+
+
+
+</div>

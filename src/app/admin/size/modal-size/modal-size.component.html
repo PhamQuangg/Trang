@@ -1,0 +1,35 @@
+
+<header class="modal-header">
+    <h5>{{title}}</h5>
+</header>
+<div class="form-modal-container">
+
+<form [formGroup]="form">
+    <div class="form-group" >
+      <label >Size</label>
+      <input type="email" class="form-control" formControlName="name" name="name">
+
+    </div>
+    <div class="form-group" >
+      <label >Giới Tính</label>
+      <select  class="form-control" formControlName="gender" name="gender">
+          <option value="1">
+            Nam
+          </option>
+          <option value="2">
+            Nữ
+          </option>
+      </select>
+
+    </div>
+    <div class="mb-3">
+        <label  class="form-label">Mô Tả</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="decriptions" name="decriptions"></textarea>
+      </div>
+  </form>
+      
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-sm btn-primary"(click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-sm btn-danger" (click)="closeModal()">Cancel</button>
+</div>

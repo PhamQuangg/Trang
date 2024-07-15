@@ -1,0 +1,49 @@
+<div class="bg-light text-center rounded p-4 height-85">
+          
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h5>Quản Lý Voucher</h5>
+       <div>
+        <form class="d-none d-md-flex ms-4">
+            <!-- <input class="form-control border-0" type="search" placeholder="Tìm kiếm"> -->
+        </form>
+      
+       </div>
+        
+    </div>
+        <div class="btn-creater-content" >
+            <button class="btn btn-sm btn-success"  (click)="openModal()">Tạo mới</button>  
+        </div>
+  
+    <div class="table-responsive">
+  
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Giá trị</th>
+                <th scope="col">Lượt sử dụng</th>
+                <th scope="col">Ngày hết hạn</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of listData | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: total } ;let index = index">
+                <th scope="row">{{index+1}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.value}}</td>
+                <td>{{item.turn}}</td>
+                <td>{{item.expirationDate}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary btn-edit" (click)="openModal(item)">Edit</button>
+                    <button class="btn btn-sm btn-danger" (click)="onDelete(item.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="page-list">
+      <pagination-controls [previousLabel]="'Trước'" [nextLabel]="'Tiếp theo'" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+  
+  </div>

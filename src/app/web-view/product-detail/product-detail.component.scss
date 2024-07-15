@@ -1,0 +1,23 @@
+.size{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90px;
+    cursor: pointer;
+    text-align: center;
+    margin: 2px;
+}
+.boder-red{
+    border: 1px solid rgb(236, 72, 72);
+}
+.preview-session{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 250px;
+    flex-direction: column;
+    padding: 17px;
+}
+.back-groundnew{
+    background-image: url("https://scontent.fdad3-1.fna.fbcdn.net/v/t1.15752-9/448760766_341751825691484_4542644863757143860_n.png?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeFVjsVd57-kj95030GTGsBGc6tLLY6sMY5zq0stjqwxjmuuDvO1A8Kl3aJ1rwgQFZb-qAN5aMq_as5DiRUuQM0T&_nc_ohc=0NJAnnLD0I4Q7kNvgETG42x&_nc_ht=scontent.fdad3-1.fna&oh=03_Q7cD1QF4WmtUiGEK8pcqHmXN-BvA3prk2J9hjBT3I0DNL-48Mw&oe=66A844B4");
+}

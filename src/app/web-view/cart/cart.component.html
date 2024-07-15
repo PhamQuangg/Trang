@@ -1,0 +1,220 @@
+<app-header></app-header>
+
+<div *ngIf="checkOut == false" class="page-container" id="page-container">
+  <main class="main">
+    <div class="shoppingBagDrawer-wrapper">
+      <div class="wrapper-shopping">
+        <div class="cart-header-title">
+          <h3 class="pull-left">Shopping Cart</h3>
+        </div>
+
+        <div class="shoppingBagDrawer-items-wrapper" *ngIf="listCart.length > 0">
+          <div class="shoppingBagDrawer-items-list">
+            <div style="width: 100%; min-height: 280px;">
+              <ng-container *ngFor="let item of listCart">
+                <div class="shoppingBagDrawer-item">
+                  <div class="item-img">
+                    <img rv-src="item.image" class="img-responsive loading" alt="" src="{{item.product?.img}}"
+                      data-was-processed="true" height="162">
+                  </div>
+                  <div class="item-info" style="width: 162px;" rv-data-variant-id="item.variant_id" data-variant-id="41081230426173">
+                    <a class="title-item" rv-href="item.url">
+                      <h3 class="item-title" rv-text="item.product_title">{{item.product?.name}}</h3>
+                    </a>
+
+                    <!-- rivets: each-properties -->
+
+                    <!-- HC - Adding notice - 25 November '21 -->
+                    <p class="cart-item-meta hc-notice" rv-text="item.properties.Notice"></p>
+
+                    <!-- FG - Private Sale - 30 June '22 -->
+                    <p class="cart-item-meta hc-notice ps-notice" rv-text="item.properties.Private"></p>
+
+                    <p class="cart-item-meta" rv-text="item.variant_title">{{item.categoryName}}</p>
+
+                    <p class="cart-item-meta hidden" rv-text="item.sku">Size : {{item.size.name}}</p>
+                    <p class="cart-item-meta">Qty : <span rv-text="item.quantity"> {{item.product.quantity}}</span></p>
+                    <div class="pro-qty">
+                      <input name="quantity" type="text" title="Quantity" value="{{item.amount}}">
+                      <div class="dec qty-btn" (click)="minusItem(item)">-</div>
+                      <div class="inc qty-btn" (click)="plusItem(item)"><span class="spanInc">+</span></div>
+                    </div>
+                  </div>
+                  <div class="item-price">
+                    <!-- rivets: if item.line_price | lt item.original_line_price -->
+                    <p class="cart-item-meta" rv-html="item.line_price | money Currency.currentCurrency">$
+                      {{item.price}}</p>
+                    <p class="cart-item-meta" style="cursor: pointer;" (click)="remove(item)"><a
+                        class="muted title-item remove" rv-data-cart-remove="index | plus 1"
+                        data-cart-remove="1">Remove</a></p>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+
+
+
+
+            <div class="subtotal">
+              <div class="col-8 text-right">
+                <span class="subtotal-text">Subtotal : </span> <span>$ {{subtotal}}</span>
+              </div>
+
+            </div>
+            <div class="checkout">
+
+              <div class="btn-gruop">
+                <button type="submit" class="btn btn-primary btn-cart" (click)="checkOut = true">Mua Ngay</button>
+
+                <label class="form-check-label" for="exampleCheck1" style="margin-top: 10px; font-size: 12px;"></label>
+
+                <button type="submit" class="btn btn-primary btn-cart" routerLink="/product"
+                  style="margin-top: 30px;">Continute Shopping</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="text-center" rv-show="cart.item_count | lt 1" *ngIf="listCart.length == 0">
+          <p>You don't have any items in your cart.</p>
+        </div>
+      </div>
+
+
+
+    </div>
+  </main>
+</div>
+
+<div *ngIf="checkOut == true" style="min-height: 800px; background: #f8f9fa; margin-top: 80px">
+  <div class="table-responsive mx-auto mt-4" style="max-width: 80%">
+    <section class="h-100 h-custom" style="background-color: #eee mt-5">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card">
+              <div class="card-body p-4">
+                <div class="row">
+                  <div class="col-lg-7">
+                    <h5 class="mb-3">
+                      <a routerLink="/product" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"
+                          style="margin-right: 10px;"></i>Tiếp tục mua sắm</a>
+                    </h5>
+                    <hr />
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <div>
+                        <p class="mb-0">Bạn có {{listCart.length}} sản phẩm trong giỏ hàng</p>
+                      </div>
+                    </div>
+
+                    <div *ngFor="let item of listCart; let i = index">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-row align-items-center">
+                              <div>
+                                <img src="{{item.product.img}}" class="img-fluid rounded-3" alt="Shopping item"
+                                  style="width: 65px ; height: 50px ; margin-right: 28px;" height="30" />
+                              </div>
+                              <div class="ms-3">
+                                <h5>{{ item.product.name }}</h5>
+                                <p class="small mb-0">$ {{ item.price }}</p>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="text-align: right ; display: flex; align-items: center; " >
+                      <span  style="margin-left: 6px; flex: 1">
+                        <div class="mb-3">
+                          <input type="text" class="form-control form-cus"   placeholder="Nhập Voucher" [(ngModel)]="voucherCode">
+                  
+                      </div>
+                      </span>
+                      <button type="button" class="btn btn-primary btn-cart" style="width: 30%; 
+                      margin-top: -16px; padding: 6px !important;" (click)="useVoucher()">
+                        sử dụng
+                      </button>
+                    </div>
+                    <span style="color: red;">{{statusVoucher}}</span>
+                    <div style="text-align: right ; display: flex; align-items: center; " >
+                      <button type="button" class="btn btn-primary btn-cart" style="width: 30%; 
+                          margin-left: 6px; padding: 6px !important;" (click)="useScore()">
+                        sử dụng {{userScore}} điểm
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-5">
+                    <div class="card text-white rounded-3" style="background-color: #cecece">
+                      <div class="card-body">
+                        <div style="text-align: left" class="d-flex justify-content-between align-items-center">
+                          <span class="font-weight-bold" style="
+                                color: black;
+                                font-size: 18px;
+                              ">Thông Tin Thanh Toán</span>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="d-flex justify-content-between">
+                          <p class="mb-2">Tên Khách Hàng : {{user}}</p>
+                          <p class="mb-2"></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <p class="mb-2">Thanh toán {{listCart.length}} sản phẩm </p>
+                          <p class="mb-2"></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <p class="mb-2">Tổng Tiền : {{subtotal}}</p>
+                          <p class="mb-2"></p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-cart" style="margin-top: 10px;"  data-toggle="modal" data-target="#exampleModal">Thanh Toán</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận Thanh Toán</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="orderForm">
+          <div class="form-group" >
+            <label >Số Điện Thoại</label>
+            <input type="email" class="form-control" formControlName="phoneNumber" name="name">
+      
+          </div>
+          <div class="mb-3">
+              <label  class="form-label">Địa Chỉ</label>
+              <input type="email" class="form-control" formControlName="address" name="name">
+            </div>
+        </form>
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-cart" (click)="onSubmit()" data-dismiss="modal" aria-label="Close" [disabled]="!orderForm.valid">Đặt Hàng</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="wrap">
+    <div class="page-container" id="page-container">
+
+        <main class="main">
+            <div class="login-div content" *ngIf="checkForm == 0" >
+                <form class="login-form" [formGroup]="loginForm">
+                    <h1 style="font-size: 20px; margin-bottom: 9px;"> Login</h1>
+                    <div class="mb-3">
+                   
+                      <input type="email" class="form-control form-cus" formControlName="email" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                    
+                      <input type="password" class="form-control form-cus" formControlName="password"  placeholder="Password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-cus" (click)="login()">Submit</button>
+
+                     <label class="form-check-label" for="exampleCheck1" style="margin-top: 10px; font-size: 12px;" >
+                       <a style="text-decoration: solid black; cursor: pointer;" (click)="checkForm = 2 ">FORGOT YOUR PASSWORD?</a> 
+                    </label>
+
+                     <button type="submit" class="btn btn-primary btn-cus" style="margin-top: 30px;" (click)="checkForm = 1">Register an account</button>
+                  </form>
+            </div>
+            <div class="login-div  content" *ngIf="checkForm == 1">
+                <form class="login-form" [formGroup]="registerForm">
+                    <h1 style="font-size: 20px; margin-bottom: 9px;"> Register</h1>
+                    <div class="mb-3">
+                        <input type="text" class="form-control form-cus" formControlName="firstName" placeholder="First Name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control form-cus" formControlName="lastName" placeholder="Last Name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control form-cus" formControlName="email" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control form-cus" formControlName="password"  placeholder="Password">
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary btn-cus" (click)="register()">Submit</button>
+        
+                    <button type="button" class="btn btn-primary btn-cus" style="margin-top: 30px;" (click)="checkForm = 0">Back to Login</button>
+                </form>
+            </div>
+            <div *ngIf="checkForm == 2" class="login-div content">
+                <form class="login-form" [formGroup]="forgotForm">
+                    <h1 style="font-size: 20px; margin-bottom: 9px;">Forgot Password</h1>
+                    <div class="mb-3">
+                        <input type="email" class="form-control form-cus" formControlName="email" placeholder="Email Address">
+                    </div>
+                    <div class="mb-3" *ngIf="otpReset != 0">
+                        <input type="number" class="form-control form-cus" formControlName="otp" placeholder="OTP">
+                    </div>
+                    <button *ngIf="otpReset == 0" type="button" class="btn btn-primary btn-cus" (click)="sendMail()">Send Mail</button>
+                    <button *ngIf="otpReset != 0" type="button" class="btn btn-primary btn-cus" (click)="checkOTP()">Submit</button>
+                    <button type="button" class="btn btn-primary btn-cus" style="margin-top: 30px;" (click)="checkForm = 0">Back to Login</button>
+                </form>
+            </div>
+            
+            <div *ngIf="checkForm == 3" class="login-div content">
+                <form class="login-form" [formGroup]="changerPassForm">
+                    <h1 style="font-size: 20px; margin-bottom: 9px;">Change Password</h1>
+                    <div class="mb-3">
+                        <input type="password" class="form-control form-cus" formControlName="password" placeholder="New Password">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control form-cus" formControlName="passwordConfirm" placeholder="Confirm Password">
+                    </div>
+                    <button type="button" class="btn btn-primary btn-cus" (click)="changerPass()">Change Password</button>
+                    <button type="button" class="btn btn-primary btn-cus" style="margin-top: 30px;" (click)="checkForm = 0">Back to Login</button>
+                </form>
+            </div>
+            
+        </main>
+
+    </div>
+</div>

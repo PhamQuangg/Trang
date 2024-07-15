@@ -1,0 +1,48 @@
+<div class="bg-light text-center rounded p-4 height-85">
+          
+  <div class="d-flex align-items-center justify-content-between mb-4">
+      <h5>Quản Lý Size Sản Phẩm</h5>
+     <div>
+      <form class="d-none d-md-flex ms-4">
+          <!-- <input class="form-control border-0" type="search" placeholder="Search"> -->
+      </form>
+    
+     </div>
+      
+  </div>
+      <div class="btn-creater-content" >
+          <button class="btn btn-sm btn-success"  (click)="openModal()">Create</button>  
+      </div>
+
+  <div class="table-responsive">
+
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Tên Size</th>
+              <th scope="col">Giới Tính</th>
+              <th scope="col">Mô Tả</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of this.listData | paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: total } ;let index = index">
+              <th scope="row">{{index+1}}</th>
+              <td>{{item.name}}</td>
+              <td *ngIf="item.gender == '1'">Nam</td>
+              <td *ngIf="item.gender == '2'">Nữ</td>
+              <td>{{item.decriptions}}</td>
+              <td>
+                  <button class="btn btn-sm btn-primary btn-edit" (click)="openModal(item)">Edit</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDelete(item.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+  <div class="page-list">
+    <pagination-controls [previousLabel]="'Last'" [nextLabel]="'Next'" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  </div>
+
+</div>
